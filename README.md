@@ -1,4 +1,4 @@
-# 🧬 BigQUERY for Identifying Taxon-Specific Sequencing Runs
+# BigQUERY for Identifying Taxon-Specific Sequencing Runs
 
 Use **Google BigQuery** to identify all sequencing runs that contain reads attributed to your **taxon of interest**.  
 This approach is particularly useful for detecting pathogens from **off-target reads** in host sequencing runs.
@@ -19,7 +19,7 @@ Identify the NCBI Taxonomy ID (TaxID) for your target organism here:
 Create a Google BigQuery account:  
 🔗 [Google BigQuery Console](https://console.cloud.google.com/bigquery)
 
-> **Note:** You can also use AWS Athena or other services, but only Google BigQuery is documented here.
+</details>**Note:** You can also use AWS Athena or other services, but only Google BigQuery is documented here.
 
 ---
 
@@ -28,9 +28,6 @@ Create a Google BigQuery account:
 ### 2.1 Use the Template Query
 
 Use the following SQL query as a template. Replace `31744` with your **target taxon’s TaxID**.
-
-<details>
-<summary>Click to expand SQL query</summary>
 
 ```sql
 SELECT 
@@ -61,3 +58,24 @@ ORDER BY
   m.sample_acc,
   m.sample_name,
   m.organism
+```
+
+> ⚠️ Important: BigQuery offers limited free queries per month.
+>    Each query consumes your free monthly data processing quota, so test cautiously.
+
+### 2.2 Interpreting the Output
+
+The output is a CSV file listing all sequencing runs that contain reads matching your specified TaxID (e.g., 31744).
+
+tax.self_count: Number of reads mapped to your taxon.
+Use this as a lower bound for estimating usable reads.
+
+You should filter runs based on this value for sufficient coverage.
+
+>    💡 Example:
+>    If your organism’s genome is ~40,000 bp and your reads are 150 bp long, filter for runs with self_count > 500 to aim for at least ~2× coverage.
+
+
+
+
+
