@@ -79,17 +79,24 @@ You should filter runs based on this value for sufficient coverage.
 
 ---
 
-### 2.3 Downloading the libraries
+### ⬇️ 2.3 Downloading the libraries
 
 For a few sequencing runs, it is possible to download them manually from NCBI SRA, but in most cases dedicated tools are more convenient and efficient.
 I usually use the bit of code below to do that. I can provide more details upon request.
 
-<pre> ```bash
-  sra_acc=SRR8534768
-  path=temp
+```bash
+sra_acc=SRR8534768
+path=temp
+
 prefetch ${sra_acc} --output-directory ${path} --max-size u
 fasterq-dump ${path}/${sra_acc} --outdir ${path}/${sra_acc}
-``` </pre>
+```
+
+Then typical bioinformatics pipeline might be used: de novo assemblies, mapping etc ...
+In some cases it can be useful to map against a reference and discard all unmapped reads to keep the dataset size small.
+
+
+
 
 
 
