@@ -63,6 +63,8 @@ ORDER BY
 > ⚠️ Important: BigQuery offers limited free queries per month.
 >    Each query consumes your free monthly data processing quota, so test cautiously.
 
+---
+
 ### 2.2 Interpreting the Output
 
 The output is a CSV file listing all sequencing runs that contain reads matching your specified TaxID (e.g., 31744).
@@ -75,7 +77,19 @@ You should filter runs based on this value for sufficient coverage.
 >    💡 Example:
 >    If your organism’s genome is ~40,000 bp and your reads are 150 bp long, filter for runs with self_count > 500 to aim for at least ~2× coverage.
 
+---
 
+### 2.3 Downloading the libraries
+
+For a few sequencing runs, it is possible to download them manually from NCBI SRA, but in most cases dedicated tools are more convenient and efficient.
+I usually use the bit of code below to do that. I can provide more details upon request.
+
+<pre> ```bash
+  sra_acc=SRR8534768
+  path=temp
+prefetch ${sra_acc} --output-directory ${path} --max-size u
+fasterq-dump ${path}/${sra_acc} --outdir ${path}/${sra_acc}
+``` </pre>
 
 
 
