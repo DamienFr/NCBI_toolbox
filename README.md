@@ -3,6 +3,7 @@
 Use **Google BigQuery** to identify all sequencing runs that contain reads attributed to your **taxon of interest**.  
 This approach is particularly useful for detecting pathogens from **off-target reads** in host sequencing runs.
 NCBI also provides guides and tutorials for [SRA Taxonomy Analysis Tool](https://www.ncbi.nlm.nih.gov/sra/docs/sra-taxonomy-analysis-tool/) and [BigQuery](https://www.ncbi.nlm.nih.gov/sra/docs/sra-bigquery/) that partially overlap with the present content.
+
 ---
 
 ## 📌 1. Prerequisites
