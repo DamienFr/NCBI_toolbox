@@ -28,7 +28,7 @@ Create a Google BigQuery account:
 
 ### 2.1 Use the Template Query
 
-Use the following SQL query as a template. Replace `31744` with your **target taxon’s TaxID**.
+Use the following SQL query as a template. Replace `31744` with your **target taxon’s TaxID**. This code is to be used on google's BigQuery interface. It will run on their server, not on your computer.
 
 ```sql
 SELECT 
